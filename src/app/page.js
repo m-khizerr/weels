@@ -108,7 +108,7 @@ export default function Home() {
                 Be the first to be notified of the launch of our mobile app!
               </p>
                   
-              <div className="w-full max-w-md px-4">    
+              <div className="w-full px-4">    
                 <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
                   <input 
                     type="email" 
