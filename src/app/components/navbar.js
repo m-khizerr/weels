@@ -75,7 +75,7 @@ export default function Navbar({ activePage = 'home' }) {
             {/* Early Access button - visible on all screen sizes but adjusted for mobile */}
             <div className='h-full flex items-center align-middle'>
               <button 
-                  className="bg-red-600 hover:bg-red-700 text-white px-2 sm:px-4 py-2 text-xs sm:text-sm font-medium rounded transition duration-300 whitespace-nowrap"
+                  className="bg-red-600 hover:bg-red-700 text-white px-2 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded transition duration-300 whitespace-nowrap"
                   >
                   EARLY APP ACCESS
               </button>

@@ -32,18 +32,59 @@ export default function Home() {
     setSubscribeToNewsletter(e.target.checked);
   };
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    alert('Message sent!');
-    setFormData({ name: '', email: '', message: '' });
+    
+    try {
+      // Send form data to the API endpoint
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          recipient: 'm.khizerr01@gmail.com'
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (response.ok) {
+        alert('Message sent!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error(data.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error sending message:', error);
+      alert('Failed to send message. Please try again later.');
+    }
   };
   
-  const handleSubscribe = (e) => {
+  const handleSubscribe = async (e) => {
     e.preventDefault();
-    console.log({ email: subscribeEmail });
-    alert('Successfully subscribed!');
-    setSubscribeEmail('');
+    
+    try {
+      const response = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: subscribeEmail }),
+      });
+      
+      if (response.ok) {
+        alert('Successfully subscribed!');
+        setSubscribeEmail('');
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to subscribe');
+      }
+    } catch (error) {
+      console.error('Subscription error:', error);
+      alert(`Failed to subscribe: ${error.message}`);
+    }
   };
   
   return (
