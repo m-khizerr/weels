@@ -1,6 +1,6 @@
 'use client'
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
 import lambo from '../../public/lambo.png';
 import Footer from './components/footer';
@@ -15,6 +15,20 @@ export default function Home() {
   const [attachments, setAttachments] = useState(0);
   const [subscribeEmail, setSubscribeEmail] = useState('');
   const [subscribeToNewsletter, setSubscribeToNewsletter] = useState(false);
+
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.substring(1);
+      const element = document.getElementById(id);
+      
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }, 500);
+      }
+    }
+  }, []);
   
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -98,15 +112,15 @@ export default function Home() {
       <Navbar activePage="home" />
 
       <main className="flex-grow pt-16">
-        <section className="relative h-screen bg-gray-900">
+        <section className="relative md:h-screen bg-gray-900">
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute inset-0 bg-black opacity-20"></div>
-            <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: `url(${lambo.src})` }}></div>
+            <div className="md:h-full h-[45vh] w-full bg-cover bg-center" style={{ backgroundImage: `url(${lambo.src})` }}></div>
           </div>
           
-          <div className="relative h-full flex flex-col justify-center px-8 sm:px-16">
-            <div className="max-w-lg">
-              <h1 className="text-5xl font-bold text-white mb-4">Find Your Perfect Used Car</h1>
+          <div className="relative md:h-full h-[45vh] flex flex-col px-8 sm:px-16">
+            <div className="max-w-xl mt-[5.5vh] md:mt-[9vh]">
+              <h1 className="md:text-4xl text-3xl font-bold text-white mb-4">Finding and maintaining your perfect used car</h1>
             </div>
           </div>
         </section>
@@ -126,21 +140,23 @@ export default function Home() {
               
               <div className="w-full md:w-1/2 text-center">
                 <h3 className="text-xl font-semibold text-gray-800 mb-4">Our Mission</h3>
-                <p className="text-gray-600 mb-6">
-                  At weels, we're dedicated to helping you find your perfect car. We believe
-                  that everyone deserves a reliable vehicle at an affordable price.
+                <p className="text-gray-600 mb-2">
+                  At weels, we're dedicated to helping you find and maintain your perfect car.
                 </p>
+                <p className="text-gray-600 mb-2">
+                  A car is more than another piece of equipment – it’s your lifeline to work, school, and all of your daily activities. And, an expression of your personality. You deserve a vehicle that’s affordable, reliable, long lasting, and attractive.
+                </p>
+                <p className="text-gray-600 mb-2">
+                  Our goal is to become your trusted partner at purchase and throughout the lifetime of your vehicle.                </p>
                 <p className="text-gray-600 mb-8">
-                  We'll soon be launching a mobile app to find and purchase used cars with
-                  the advice and support of our expert staff. Stay tuned!
-                </p>
+                  We'll soon be launching our mobile app. Stay tuned!                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Updated Join Our Mailing List section with better responsiveness */}
-        <section className="py-12 sm:py-16 bg-white">
+        <section id='mailingList' className="py-12 sm:py-16 bg-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-semibold text-center text-gray-500 mb-8 sm:mb-16">Join Our Mailing List</h2>
             <div className="flex flex-col text-center w-full justify-center items-center">
@@ -161,7 +177,7 @@ export default function Home() {
                   />
                   <button 
                     type="submit" 
-                    className="bg-black text-white px-6 py-2 hover:bg-gray-800 transition duration-300 cursor-pointer whitespace-nowrap"
+                    className="bg-[#2C4EEE] text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-900 transition duration-300 cursor-pointer whitespace-nowrap"
                   >
                     SIGN UP
                   </button>
@@ -236,7 +252,7 @@ export default function Home() {
                   <div className='self-center mt-2'>
                     <button 
                       type="submit" 
-                      className="bg-black text-white px-6 py-2 hover:bg-gray-800 transition duration-300 cursor-pointer"
+                      className="bg-[#2C4EEE] text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-900 transition duration-300 cursor-pointer whitespace-nowrap"
                     >
                       SEND
                     </button>

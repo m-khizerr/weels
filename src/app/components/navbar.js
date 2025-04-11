@@ -32,6 +32,21 @@ export default function Navbar({ activePage = 'home' }) {
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
+  
+  const scrollToMailingList = () => {
+    if (window.location.pathname === '/' || window.location.pathname === '') {
+      const mailingListSection = document.getElementById('mailingList');
+      if (mailingListSection) {
+        mailingListSection.scrollIntoView({ behavior: 'smooth' });
+        
+        if (mobileMenuOpen) {
+          setMobileMenuOpen(false);
+        }
+      }
+    } else {
+      window.location.href = '/#mailingList';
+    }
+  };
 
   return (
     <>
@@ -82,16 +97,15 @@ export default function Navbar({ activePage = 'home' }) {
               </div>
             </div>
             
-            {/* Early Access button - visible on all screen sizes but adjusted for mobile */}
             <div className='h-full flex items-center align-middle'>
               <button 
-                  className="bg-red-600 hover:bg-red-700 text-white px-2 sm:px-4 py-2 text-xs sm:text-sm font-semibold rounded transition duration-300 whitespace-nowrap"
-                  >
-                  EARLY APP ACCESS
+                className="bg-red-600 hover:bg-red-700 font-bold text-white px-2 sm:px-4 py-2 text-xs sm:text-sm rounded transition duration-300 whitespace-nowrap"
+                onClick={() => scrollToMailingList()}
+              >
+                EARLY APP ACCESS
               </button>
             </div>
             
-            {/* App store buttons - hidden on small screens */}
             <div className="hidden lg:flex items-center space-x-4">
               <a href="#" className="flex items-center">
                 <img 
@@ -109,7 +123,6 @@ export default function Navbar({ activePage = 'home' }) {
               </a>
             </div>
             
-            {/* Mobile menu button - only visible on small screens */}
             <div className="md:hidden flex items-center">
               <button 
                 type="button"
@@ -117,7 +130,6 @@ export default function Navbar({ activePage = 'home' }) {
                 onClick={toggleMobileMenu}
               >
                 <span className="sr-only">Open main menu</span>
-                {/* Hamburger icon */}
                 <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
@@ -126,7 +138,6 @@ export default function Navbar({ activePage = 'home' }) {
           </div>
         </div>
         
-        {/* Mobile menu, show/hide based on menu state */}
         <div className={`md:hidden ${mobileMenuOpen ? 'block' : 'hidden'}`}>
           <div className="pt-2 pb-3 space-y-1 border-t border-gray-200">
             <Link 
@@ -184,7 +195,6 @@ export default function Navbar({ activePage = 'home' }) {
         </div>
       </nav>
       
-      {/* Overlay for mobile menu */}
       {mobileMenuOpen && (
         <div 
           className="md:hidden fixed inset-0 z-0 bg-black opacity-25"
