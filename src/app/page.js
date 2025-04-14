@@ -2,7 +2,7 @@
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import Navbar from './components/navbar';
-import lambo from '../../public/lambo.png';
+import lambo from '../../public/lamboo.png';
 import Footer from './components/footer';
 
 export default function Home() {
@@ -102,7 +102,7 @@ export default function Home() {
   };
   
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="flex flex-col min-h-screen text-black">
       <Head>
         <title>weels - Find Your Perfect Used Car</title>
         <meta name="description" content="Find your perfect used car with Weelz" />
@@ -112,24 +112,48 @@ export default function Home() {
       <Navbar activePage="home" />
 
       <main className="flex-grow pt-16">
-        <section className="relative md:h-screen bg-gray-900">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 bg-black opacity-20"></div>
-            <div className="md:h-full h-[45vh] w-full bg-cover bg-center" style={{ backgroundImage: `url(${lambo.src})` }}></div>
+
+      <section className="relative h-screen md:h-screen">
+        {/* Base background - black to light gray gradient with 40-60 ratio */}
+        <div 
+          className="absolute inset-0" 
+          style={{ 
+            background: 'linear-gradient(to bottom, #000000 0%, #000000 10%, #0a0a0a 20%, #111111 30%, #222222 40%, #333333 50%, #555555 60%, #777777 70%, #999999 80%, #bbbbbb 90%, #dddddd 100%)'
+                    }}
+        ></div>
+        
+        {/* Content container */}
+        <div className="px-4 mx-auto max-w-[95vw] md:max-w-[70vw] sm:px-6 lg:px-8">
+          {/* Text at the top left corner */}
+          <div className="absolute top-0 left-0 px-8 sm:pl-40 pt-[20vh] md:pt-[10vh] z-10 max-w-full md:max-w-[70vw]">
+              <h1 
+                className="text-3xl font-bold text-white md:text-7xl"
+                // style={{ 
+                //   textShadow: '0 1px 5px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.7), 0 2px 4px rgba(0, 0, 0, 0.9)' 
+                // }}
+              >
+                Finding and maintaining your perfect used car
+              </h1>
           </div>
           
-          <div className="relative md:h-full h-[45vh] flex flex-col px-8 sm:px-16">
-            <div className="max-w-xl mt-[5.5vh] md:mt-[9vh]">
-              <h1 className="md:text-4xl text-3xl font-bold text-white mb-4">Finding and maintaining your perfect used car</h1>
+          {/* Car image placed lower in the viewport */}
+          <div className="absolute inset-0 flex items-center justify-center mt-[10vh] md:mt-[10vh]">
+            <div className="w-[90vw] md:w-2/5">
+              <img 
+                src={lambo.src} 
+                alt="Lamborghini" 
+                className="object-contain w-full h-auto" 
+              />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
         <section className="py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl font-semibold text-center text-gray-500 mb-16">About weels</h2>
+          <div className="px-4 mx-auto max-w-[95vw] md:max-w-[70vw] sm:px-6 lg:px-8">
+            <h2 className="mb-16 text-4xl font-semibold text-center">About weels</h2>
             
-            <div className="flex flex-col md:flex-row items-center gap-12">
+            <div className="flex flex-col items-center gap-12 md:flex-col">
               <div className="w-full md:w-1/2">
                 <img 
                   src="/car.png"
@@ -138,17 +162,17 @@ export default function Home() {
                 />
               </div>
               
-              <div className="w-full md:w-1/2 text-center">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Our Mission</h3>
-                <p className="text-gray-600 mb-2">
+              <div className="w-full">
+                <h3 className="mb-4 text-xl font-semibold text-center">Our Mission</h3>
+                <p className="mb-2">
                   At weels, we're dedicated to helping you find and maintain your perfect car.
                 </p>
-                <p className="text-gray-600 mb-2">
+                <p className="mb-2 ">
                   A car is more than another piece of equipment – it’s your lifeline to work, school, and all of your daily activities. And, an expression of your personality. You deserve a vehicle that’s affordable, reliable, long lasting, and attractive.
                 </p>
-                <p className="text-gray-600 mb-2">
+                <p className="mb-2">
                   Our goal is to become your trusted partner at purchase and throughout the lifetime of your vehicle.                </p>
-                <p className="text-gray-600 mb-8">
+                <p className="mb-8">
                   We'll soon be launching our mobile app. Stay tuned!                </p>
               </div>
             </div>
@@ -156,28 +180,28 @@ export default function Home() {
         </section>
 
         {/* Updated Join Our Mailing List section with better responsiveness */}
-        <section id='mailingList' className="py-12 sm:py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-center text-gray-500 mb-8 sm:mb-16">Join Our Mailing List</h2>
-            <div className="flex flex-col text-center w-full justify-center items-center">
+        <section id='mailingList' className="py-12 bg-white sm:py-5">
+          <div className="px-4 mx-auto max-w-[95vw] md:max-w-[70vw] sm:px-6 lg:px-8">
+            <h2 className="mb-8 text-3xl font-semibold text-center sm:text-4xl sm:mb-10">Join Our Mailing List</h2>
+            <div className="flex flex-col w-full text-left">
               
-              <p className="text-gray-600 mb-4 px-4 max-w-2xl">
+              <p className="max-w-2xl px-4 mb-4 text-left">
                 Be the first to be notified of the launch of our mobile app!
               </p>
                   
-              <div className="w-full px-4">    
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
+              <div className="w-full">    
+                <form onSubmit={handleSubscribe} className="flex flex-col items-center gap-4">
                   <input 
                     type="email" 
                     placeholder="Email" 
-                    className="flex-grow px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50 w-full"
+                    className="flex-grow w-full px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50"
                     value={subscribeEmail}
                     onChange={handleSubscribeChange}
                     required
                   />
                   <button 
                     type="submit" 
-                    className="bg-[#2C4EEE] text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-900 transition duration-300 cursor-pointer whitespace-nowrap"
+                    className="bg-[#2C4EEE] w-full md:w-2/5 text-white px-6 py-2 rounded-md font-extrabold hover:bg-blue-900 transition duration-300 cursor-pointer whitespace-nowrap"
                   >
                     SIGN UP
                   </button>
@@ -188,81 +212,60 @@ export default function Home() {
         </section>
 
         {/* Updated Contact Us section with better responsiveness */}
-        <section className="py-12 sm:py-16 bg-white">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-center text-gray-500 mb-8 sm:mb-16">Contact Us</h2>
+        <section className="py-12 bg-white sm:py-6">
+          <div className="px-4 mx-auto max-w-[95vw] md:max-w-[70vw] sm:px-6 lg:px-8">
+            <h2 className="mb-8 text-3xl font-semibold text-center sm:text-4xl sm:mb-5">Contact Us</h2>
             
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-              <div className="w-full md:w-1/2">
-                <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">Get in Touch!</h3>
-                
-                <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 flex flex-col">
+            <div className="flex flex-col gap-8 md:flex-col md:gap-12">
+              <div className="w-full">                
+                <form onSubmit={handleSubmit} className="flex flex-col space-y-4 sm:space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name*</label>
+                    <label htmlFor="name" className="block mb-1 text-sm font-medium">Name*</label>
                     <input 
                       type="text" 
                       id="name" 
                       name="name" 
                       value={formData.name}
                       onChange={handleChange}
-                      className="flex-grow px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50 w-full"
+                      className="flex-grow w-full px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50"
                       required
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email*</label>
+                    <label htmlFor="email" className="block mb-1 text-sm font-medium">Email*</label>
                     <input 
                       type="email" 
                       id="email" 
                       name="email" 
                       value={formData.email}
                       onChange={handleChange}
-                      className="flex-grow px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50 w-full"
+                      className="flex-grow w-full px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50"
                       required
                     />
                   </div>
                   
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                    <label htmlFor="message" className="block mb-1 text-sm font-medium">Message</label>
                     <textarea 
                       id="message" 
                       name="message" 
                       rows="4" 
                       value={formData.message}
                       onChange={handleChange}
-                      className="flex-grow px-4 py-2 text-black shadow-xs shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50 w-full"
+                      className="flex-grow w-full px-4 py-2 text-black shadow-xs max-h-20 shadow-gray-300 focus:outline-none focus:ring-1 focus:ring-gray-50"
                     ></textarea>
                   </div>
                   
-                  <div className="flex items-center">
-                    <input 
-                      id="newsletter" 
-                      name="newsletter" 
-                      type="checkbox" 
-                      className="h-4 w-4 text-green-600 focus:ring-green-500 border-gray-300 rounded"
-                      checked={subscribeToNewsletter}
-                      onChange={handleCheckboxChange}
-                    />
-                    <label htmlFor="newsletter" className="ml-2 block text-sm text-gray-700">
-                      Sign up for our email list for updates, promotions, and more.
-                    </label>
-                  </div>
-                  
-                  <div className='self-center mt-2'>
+                  <div className='flex items-center self-center justify-center min-w-full mt-2'>
                     <button 
                       type="submit" 
-                      className="bg-[#2C4EEE] text-white px-6 py-2 rounded-md font-semibold hover:bg-blue-900 transition duration-300 cursor-pointer whitespace-nowrap"
+                      className="bg-[#2C4EEE] w-full md:w-2/5  text-white px-6 py-2 rounded-md font-extrabold hover:bg-blue-900 transition duration-300 cursor-pointer whitespace-nowrap"
                     >
                       SEND
                     </button>
                   </div>
                 </form>
-              </div>
-              
-              <div className="w-full md:w-1/2 mt-8 md:mt-0">
-                <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">weels</h3>
-                <p className="text-gray-600 mb-2">hello@weels.ai</p>
               </div>
             </div>
           </div>

@@ -51,25 +51,24 @@ export default function Navbar({ activePage = 'home' }) {
   return (
     <>
       <nav 
-        className="bg-white shadow-md fixed w-full z-10"
+        className="fixed z-10 w-full bg-white shadow-md"
         style={navbarStyle}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-[70px]">
             <div className="flex items-center">
-              <div className="flex-shrink-0 flex items-center align-end">
-                <div className="h-8 w-8 mr-2">
-                  <img src='/weelzLogo.png' className='w-9 h-9' />
+              <div className="flex items-center flex-shrink-0 align-end">
+                <div className="mr-2">
+                  <img src='/weels_logo.png' className='h-28' />
                 </div>
-                <span className="text-xl font-nunito text-gray-800 mt-2">weels</span>
               </div>
-              <div className="hidden md:ml-6 md:flex md:space-x-8 mt-2">
+              <div className="hidden md:ml-6 md:flex md:space-x-8">
                 <Link 
                   href="/" 
                   className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                     activePage === 'home' 
-                      ? 'border-green-500 text-gray-900' 
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-green-500' 
+                      : 'border-transparent hover:border-gray-300'
                   }`}
                 >
                   Home
@@ -78,8 +77,8 @@ export default function Navbar({ activePage = 'home' }) {
                   href="/blogs" 
                   className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                     activePage === 'blogs' 
-                      ? 'border-green-500 text-gray-900' 
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-green-500' 
+                      : 'border-transparent hover:border-gray-300'
                   }`}
                 >
                   Blogs
@@ -88,8 +87,8 @@ export default function Navbar({ activePage = 'home' }) {
                   href="/search" 
                   className={`inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium ${
                     activePage === 'search' 
-                      ? 'border-green-500 text-gray-900' 
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                      ? 'border-green-500' 
+                      : 'border-transparent hover:border-gray-300'
                   }`}
                 >
                   Search
@@ -97,16 +96,17 @@ export default function Navbar({ activePage = 'home' }) {
               </div>
             </div>
             
-            <div className='h-full flex items-center align-middle'>
+            <div className='flex items-center h-full align-middle'>
               <button 
-                className="bg-red-600 hover:bg-red-700 font-bold text-white px-2 sm:px-4 py-2 text-xs sm:text-sm rounded transition duration-300 whitespace-nowrap"
+                className="px-2 py-2 font-sans text-xs text-white transition duration-300 bg-red-600 rounded cursor-pointer hover:bg-red-700 sm:px-4 sm:text-[14px] whitespace-nowrap"
                 onClick={() => scrollToMailingList()}
+                style={{fontWeight: 800}}
               >
                 EARLY APP ACCESS
               </button>
             </div>
-            
-            <div className="hidden lg:flex items-center space-x-4">
+
+            <div className="items-center hidden space-x-4 lg:flex">
               <a href="#" className="flex items-center">
                 <img 
                   src="/appstore.png" 
@@ -123,14 +123,14 @@ export default function Navbar({ activePage = 'home' }) {
               </a>
             </div>
             
-            <div className="md:hidden flex items-center">
+            <div className="flex items-center md:hidden">
               <button 
                 type="button"
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
+                className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-gray-500 hover:bg-gray-100 focus:outline-none"
                 onClick={toggleMobileMenu}
               >
                 <span className="sr-only">Open main menu</span>
-                <svg className="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <svg className="block w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               </button>
@@ -175,7 +175,7 @@ export default function Navbar({ activePage = 'home' }) {
             </Link>
             
             {/* App store badges in mobile menu */}
-            <div className="flex space-x-2 pl-3 pt-2">
+            <div className="flex pt-2 pl-3 space-x-2">
               <a href="#" className="flex items-center">
                 <img 
                   src="/appstore.png" 
@@ -197,7 +197,7 @@ export default function Navbar({ activePage = 'home' }) {
       
       {mobileMenuOpen && (
         <div 
-          className="md:hidden fixed inset-0 z-0 bg-black opacity-25"
+          className="fixed inset-0 z-0 bg-black opacity-25 md:hidden"
           onClick={() => setMobileMenuOpen(false)}
         ></div>
       )}
